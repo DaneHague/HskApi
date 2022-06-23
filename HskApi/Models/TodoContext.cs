@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HskApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 
-namespace HskApi.Models
+namespace Hski.Models
 {
     public class TodoContext : DbContext
     {
@@ -11,5 +12,6 @@ namespace HskApi.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; } = null!;
+        public DbSet<HskDetails> HskDetails { get; set; } = null!;
     }
 }
