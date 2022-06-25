@@ -18,13 +18,14 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy.WithOrigins("http://localhost:3000",
-                                              "http://www.contoso.com")
+                                              "http://www.contoso.com",
+                                              "https://danehague.github.io")
                                                     .AllowAnyHeader()
                                                     .AllowAnyMethod();
                       });
 });
 
-builder.Services.AddDbContext<TodoContext>(opt =>
+builder.Services.AddDbContext<HskContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("HskDatabase")));
 //builder.Services.AddSwaggerGen(c =>
 //{
@@ -43,7 +44,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    var context = services.GetRequiredService<TodoContext>();
+    var context = services.GetRequiredService<HskContext>();
     context.Database.EnsureCreated();
 }
 

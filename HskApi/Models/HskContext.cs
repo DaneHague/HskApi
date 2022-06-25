@@ -4,14 +4,13 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Hski.Models
 {
-    public class TodoContext : DbContext
+    public class HskContext : DbContext
     {
-        public TodoContext(DbContextOptions<TodoContext> options)
+        public HskContext(DbContextOptions<HskContext> options)
             : base(options)
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; } = null!;
         public DbSet<HskDetails> HskDetails { get; set; } = null!;
     }
 }

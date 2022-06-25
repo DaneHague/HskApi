@@ -4,7 +4,7 @@
 
 namespace HskApi.Migrations
 {
-    public partial class AddedHskTable : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,10 @@ namespace HskApi.Migrations
                 name: "HskDetails",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Pinyin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Hanzi = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pinyin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Translation1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Translation2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Translation3 = table.Column<string>(type: "nvarchar(max)", nullable: true),

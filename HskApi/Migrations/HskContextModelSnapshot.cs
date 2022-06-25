@@ -4,18 +4,16 @@ using Hski.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace HskApi.Migrations
 {
-    [DbContext(typeof(TodoContext))]
-    [Migration("20220623214842_AddedHskTable")]
-    partial class AddedHskTable
+    [DbContext(typeof(HskContext))]
+    partial class HskContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +24,11 @@ namespace HskApi.Migrations
 
             modelBuilder.Entity("HskApi.Models.HskDetails", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Hanzi")
                         .HasColumnType("nvarchar(max)");
@@ -50,28 +51,6 @@ namespace HskApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HskDetails");
-                });
-
-            modelBuilder.Entity("HskApi.Models.TodoItem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<bool>("IsComplete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("test1")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TodoItems");
                 });
 #pragma warning restore 612, 618
         }

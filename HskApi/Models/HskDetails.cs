@@ -4,9 +4,10 @@ namespace HskApi.Models
 {
     public class HskDetails
     {
-        public string Id { get; set; }
-        public string? Pinyin { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string? Hanzi { get; set; }
+        public string? Pinyin { get; set; }
         public string? Translation1 { get; set; }
         public string? Translation2 { get; set; }
         public string? Translation3 { get; set; }
